@@ -1,0 +1,52 @@
+.data {
+    table {
+        margin-top: .5vw;
+        width: 100%;
+        border-collapse: collapse;
+
+        tbody {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        tr:first-child {
+            color: black;
+            background-color: white;
+            border-top-left-radius: .5vw;
+            border-top-right-radius: .5vw;
+        }
+        
+        tr {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: .05vw var(--prime-color) solid;
+            padding: .2vw 0;
+
+            td {
+                width: 100%;
+            }
+        }
+    }
+
+    .controls {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: .26vw;
+
+        button {
+            flex-grow: 1;
+            border-radius: 0;
+            border: none;
+
+            &:first-child {
+                border-bottom-left-radius: .5vw;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: .5vw;
+            }
+        }
+    }
+}

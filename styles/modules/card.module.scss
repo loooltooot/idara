@@ -1,0 +1,22 @@
+.card {
+    background-color: black;
+    border-radius: 1.56vw;
+    padding: 1vw;
+    box-sizing: border-box;
+    position: relative;
+
+    header {
+        position: absolute;
+        top: -1.1vw;
+        background-color: black;
+        padding: .2vw .8vw;
+        border-radius: .52vw;
+
+        h2 {
+            font-size: 1.25vw;
+            color: var(--prime-color);
+            margin: 0;
+            font-weight: 700;
+        }
+    }
+}

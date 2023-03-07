@@ -1,0 +1,11 @@
+.input {
+    max-width: 11vw;
+    border: none;
+    background-color: #203a25;
+    color: white;
+    padding: .2vw .6vw;
+
+    &:focus {
+        outline: none;
+    }
+}

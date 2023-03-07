@@ -1,0 +1,10 @@
+.credit {
+    width: 6.09vw;
+    height: 2.81vw;
+    margin-left: .52vw;
+    transition: transform .2s ease-in;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}

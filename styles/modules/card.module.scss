@@ -1,9 +1,21 @@
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(2vw);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .card {
     background-color: black;
     border-radius: 1.56vw;
     padding: 1vw;
     box-sizing: border-box;
     position: relative;
+    animation: slideIn .4s ease-out 0s 1;
 
     header {
         position: absolute;

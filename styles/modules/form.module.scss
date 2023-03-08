@@ -1,3 +1,15 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 .data {
     table {
         margin-top: .5vw;
@@ -11,10 +23,17 @@
         }
 
         tr:first-child {
-            color: black;
-            background-color: white;
+            color: white;
             border-top-left-radius: .5vw;
             border-top-right-radius: .5vw;
+            
+            td {
+                padding: 0 .5vw;
+            }
+        }
+
+        tr:not(:first-child) {
+            animation: fadeIn ease-in .3s 0s 1;
         }
         
         tr {

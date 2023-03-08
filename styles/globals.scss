@@ -27,7 +27,7 @@
 
 body {
     background: linear-gradient(255.68deg, #000000 0%, #2A5231 53.65%, #000000 100%);
-    overflow-y: clip;
+    overflow-x: clip;
 }
 
 @keyframes slideIn {
@@ -72,10 +72,17 @@ body {
 
 main {
     padding: var(--text-padding);
+    row-gap: 3vw;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
 }
 
 #__next > footer {
     background-color: white;
     padding-top: 1vw;
     padding-bottom: 1vw;
+    display: flex;
+    justify-content: space-between;
 }

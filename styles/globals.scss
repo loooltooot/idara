@@ -7,6 +7,16 @@
     --text-padding: 0 30.47vw;
 }
 
+::selection {
+    background-color: var(--prime-color);
+    color: black;
+}
+
+::-moz-selection {
+    background-color: var(--prime-color);
+    color: black;
+}
+
 * {
     font-size: var(--base-font-size);
 }

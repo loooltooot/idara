@@ -14,7 +14,7 @@ export function calcOutput(fields: IField[], whatCalc: string) {
     output += planDesc + '\n'
     output += factDesc + '\n\n'
 
-    const absoluteDelta = +factNumeric - +planNumeric
+    const absoluteDelta = round(+factNumeric - +planNumeric)
     const relativeDelta = round(+factNumeric / +planNumeric * 100)
 
     output += `Δабс = ${factNumeric} - ${planNumeric} = ${absoluteDelta} \n`
@@ -32,14 +32,14 @@ export function calcOutput(fields: IField[], whatCalc: string) {
             case Category.PLAN:
                 desc += 'п = '
                 fields.forEach(field => {
-                    desc += field.planValue + ' * '
+                    desc += round(field.planValue) + ' * '
                     product *= field.planValue
                 })
                 break
             case Category.FACT:
                 desc += 'ф = '
                 fields.forEach(field => {
-                    desc += field.factValue + ' * '
+                    desc += round(field.factValue) + ' * '
                     product *= field.factValue
                 })
                 break
@@ -48,16 +48,17 @@ export function calcOutput(fields: IField[], whatCalc: string) {
                 break
         }
     
-        desc = desc.substring(0, desc.length - 2) + ' = ' + product
+        product = round(product)
+        desc = desc.substring(0, desc.length - 2) + ' = ' + round(product)
 
-        return [product, desc]
+        return [round(product), desc]
     }
 
     function round(number: number) {
         const temp = Math.floor(number)
         const afterPoint = number - temp
 
-        return afterPoint != 0 ? number.toFixed(2) : number
+        return afterPoint != 0 ? +number.toFixed(2) : number
     }
 
     function chainMethod() {
@@ -73,12 +74,12 @@ export function calcOutput(fields: IField[], whatCalc: string) {
             let iterationOutput = ''
             iterationOutput += `\n${whatCalc}${index + 1} = `
             temp.forEach(value => {
-                iterationOutput += value.planValue + ' * '
+                iterationOutput += round(value.planValue) + ' * '
             })
             iterationOutput = iterationOutput.substring(0, iterationOutput.length - 2) + ' = ' + currentValue + '\n'
             output += iterationOutput
 
-            const delta = +currentValue - previousValue
+            const delta = round(+currentValue - previousValue)
             output += `${whatCalc}${index + 1} - ${whatCalc}${index == 0 ? 'п' : index} = ${currentValue} - ${previousValue} = ${delta}`  + '\n'
             deltas.push(delta)
 
@@ -91,7 +92,7 @@ export function calcOutput(fields: IField[], whatCalc: string) {
         deltas.forEach(delta => {
             deltasSum += delta
         })
-        output += `\nПроверка: ${deltas.join(' + ')} = ${deltasSum} (Δабс = ${absoluteDelta})`
+        output += `\nПроверка: ${deltas.join(' + ')} = ${round(deltasSum)} (Δабс = ${absoluteDelta})`
 
         return output
     }
@@ -106,7 +107,7 @@ export function calcOutput(fields: IField[], whatCalc: string) {
         
         let diff = ''
         let planDiff = ''
-        const planDelta = fields[index].factValue - fields[index].planValue
+        const planDelta = round(fields[index].factValue - fields[index].planValue)
 
         switch(true) {
             case currentValue > previousValue:

@@ -10,10 +10,23 @@ interface IOutput {
 
 export default function Output({fields}: IOutput) {
     const [target, setTarget] = useState('')
-    const [isStart, setIsStart] = useState(false)
+    const [isStarted, setIsStarted] = useState(false)
+    const [isAnimated, setIsAnimated] = useState(false)
 
     function printOutput(output: string) {
+        const content = document.getElementById('output-content')
 
+        if(content && !isStarted) {
+            for(let i = 0; i < output.length; i++) {
+                setTimeout(() => {
+                    content.innerHTML += output[i]
+                }, 10 * i)
+            }
+            setTimeout(() => {
+                content.innerHTML = ''
+                setIsAnimated(true)
+            }, 10 * output.length)
+        }
     }
 
     const output = useMemo(() =>
@@ -30,10 +43,13 @@ export default function Output({fields}: IOutput) {
                     value={target}
                     className={style.input}
                 />
-                <button onClick={() => setIsStart(true)}>Рассчитать</button>
+                <button onClick={() => {
+                    printOutput(calcOutput(fields, target))
+                    setIsStarted(true)
+                }}>Рассчитать</button>
             </div>
             <p className={style.content} id="output-content">
-                {isStart 
+                {isAnimated 
                     ? output
                     : ''
                 }

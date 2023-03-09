@@ -58,7 +58,7 @@ body {
     animation: slideIn .4s ease-out 0s 1;
 
     h1 {
-        font-size: 3.33vw;
+        font-size: 3.33em;
         color: white;
         margin: 0;
         font-weight: 800;
@@ -95,4 +95,38 @@ main {
     padding-bottom: 1vw;
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 450px) {
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(6vw);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    :root {
+        --base-font-size: 4.44vw;
+
+        --side-padding: 0 10.42vw;
+        --text-padding: 0 10.42vw;
+    }
+
+    #__next > header {
+        img {
+            width: 10vw;
+            height: 10vw;
+            margin-top: 4vw;
+        }
+    }
+
+    main {
+        row-gap: 10vw;
+        padding-top: 6vw;
+        padding-bottom: 6vw;
+    }
 }

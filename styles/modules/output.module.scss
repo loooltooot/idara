@@ -29,3 +29,17 @@
         margin-top: .52vw;
     }
 }
+
+@media screen and (max-width: 450px) {
+    .output {
+        .start_div {
+            .input {
+                max-width: 25vw;
+            }
+        }
+
+        .content {
+            margin-top: 4vw;
+        }
+    }
+}

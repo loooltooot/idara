@@ -51,7 +51,7 @@ export function calcOutput(fields: IField[], whatCalc: string) {
         product = round(product)
         desc = desc.substring(0, desc.length - 2) + ' = ' + round(product)
 
-        return [round(product), desc]
+        return [product, desc]
     }
 
     function round(number: number) {

@@ -69,3 +69,16 @@
         }
     }
 }
+
+@media screen and (max-width: 450px) {
+    .data {
+        table {
+            tr {
+                td {
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
